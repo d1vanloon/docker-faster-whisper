@@ -17,4 +17,4 @@ exec \
         --download-dir /config \
         ${DEBUG:+--debug} \
         ${LOCAL_ONLY:+--local-files-only} \
-        "${initial_prompt_args[@]}"
+        ${initial_prompt_args[@]+"${initial_prompt_args[@]}"}
