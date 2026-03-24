@@ -99,6 +99,7 @@ services:
       - LOCAL_ONLY= #optional
       - WHISPER_BEAM=1 #optional
       - WHISPER_LANG=auto #optional
+      - WHISPER_INITIAL_PROMPT= #optional
       - WHISPER_MODEL=auto #optional
     volumes:
       - /path/to/faster-whisper/data:/config
@@ -119,6 +120,7 @@ docker run -d \
   -e LOCAL_ONLY= `#optional` \
   -e WHISPER_BEAM=1 `#optional` \
   -e WHISPER_LANG=auto `#optional` \
+  -e WHISPER_INITIAL_PROMPT= `#optional` \
   -e WHISPER_MODEL=auto `#optional` \
   -p 10300:10300 \
   -v /path/to/faster-whisper/data:/config \
@@ -140,6 +142,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e LOCAL_ONLY=` | If set to `true`, or any other value, the container will not attempt to download models from HuggingFace and will only use locally-provided models. |
 | `-e WHISPER_BEAM=1` | Number of candidates to consider simultaneously during transcription. |
 | `-e WHISPER_LANG=auto` | Two character code for the language that you will speak to the add-on. |
+| `-e WHISPER_INITIAL_PROMPT=` | Optional text prompt provided to the model for the first transcription window. |
 | `-e WHISPER_MODEL=auto` | Whisper model that will be used for transcription. From [here](https://github.com/SYSTRAN/faster-whisper/blob/master/faster_whisper/utils.py#L11-L31). |
 | `-v /config` | Local path for Whisper config files. |
 | `--read-only=true` | Run container with a read-only filesystem. Please [read the docs](https://docs.linuxserver.io/misc/read-only/). |
@@ -306,6 +309,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **24.03.26:** - Add support for `WHISPER_INITIAL_PROMPT`.
 * **26.01.26:** - Default to `auto` for model and language if not set.
 * **20.08.25:** - Add gpu-legacy branch for pre-Turing cards.
 * **10.08.25:** - Add support for local-only mode.
